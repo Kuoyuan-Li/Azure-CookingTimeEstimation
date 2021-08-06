@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def index():
+    # Index page shows the form for user to fill the recipe details
     return render_template('index.html')
 
 
@@ -27,7 +28,7 @@ def index_post():
     key = os.environ['KEY']
     endpoint = os.environ['ENDPOINT']
     #print (key, endpoint)
-    # Call ML endpoint
+    # Call ML endpoint, ask the ML model for prediction
     data = {
         "Inputs": {
             "WebServiceInput0":
@@ -55,8 +56,10 @@ def index_post():
     try:
         response = urllib.request.urlopen(req)
         result = response.read()
-        json_result = json.loads(result)
+        json_result = json.loads(result.decode('utf-8'))
         output = json_result["Results"]["WebServiceOutput0"][0]
+        print(output)
+        # get answer (cooking time prediction) from the server
         cookingTime = output["cookingTimePrediction"]
 
     except urllib.error.HTTPError as error:
@@ -66,16 +69,17 @@ def index_post():
         print(error.info())
         print(json.loads(error.read().decode("utf8", 'ignore')))
     
+    # decide speed based on label
     if cookingTime == "1.0":
         cookingTime = "rapidly"
     elif cookingTime == "2.0":
         cookingTime = "neither fast nor slow"
     elif cookingTime == "3.0":
-        cookingTime = "slowlly"
+        cookingTime = "slowly"
 
     # Call render template, passing the recipe name and cooking time to the template
     return render_template(
         'result.html',
-        recipeName = "",
-        cookingTime = ""
+        recipeName = recipeName,
+        cookingTime = cookingTime
     )
