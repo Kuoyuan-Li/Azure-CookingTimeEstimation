@@ -1,4 +1,17 @@
 # Project: Cooking time estimation base on food recipe 
+## Deployed web application using Azure Web Services: https://cooking-time-prediction.azurewebsites.net/
+## Run in local
+Create .env file under code folder, put 
+```bash
+ENDPOINT = http://20.53.169.140:80/api/v1/service/predict-cooking-time/score
+KEY = gMGAX6u7vRZKWu24RZQchF696U8mJ6X5
+```
+In the .env file
+Under code directory, run 
+```bash
+flask run
+```
+Then the web application can be accessed via localhost:5000
 ## My idea, approach and implementation
 ### Idea formation
 
