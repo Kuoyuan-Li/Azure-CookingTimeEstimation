@@ -1,4 +1,4 @@
-import requests, os, uuid, json
+import requests, os, json, urllib.request
 from dotenv import load_dotenv
 load_dotenv()
 from flask import Flask, render_template, request
@@ -20,18 +20,62 @@ def index_post():
     ingredients = request.form['ingredients']
     stepsCount = request.form['stepsCount']
     steps = request.form['steps']
-    cookingTime = 0
+    #print (recipeName,ingredientsCount,ingredients,stepsCount,steps)
+    cookingTime = 1.0
+
     # Load the values from .env
-    #key = os.environ['KEY']
-    #endpoint = os.environ['ENDPOINT']
-    #location = os.environ['LOCATION']
+    key = os.environ['KEY']
+    endpoint = os.environ['ENDPOINT']
+    #print (key, endpoint)
+    # Call ML endpoint
+    data = {
+        "Inputs": {
+            "WebServiceInput0":
+            [
+                {
+                    'name': recipeName,
+                    'n_ingredients': ingredientsCount,
+                    'ingredients': ingredients,
+                    'n_steps': stepsCount,
+                    'steps': steps
+                },
+            ],
+        },
+        "GlobalParameters":  {
+        }
+    }
 
-    # Indicate that we want to translate and the API version (3.0) and the target language
+    body = str.encode(json.dumps(data))
 
-    # Call render template, passing the translated text,
-    # original text, and target language to the template
+
+    headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ key)}
+
+    req = urllib.request.Request(endpoint, body, headers)
+
+    try:
+        response = urllib.request.urlopen(req)
+        result = response.read()
+        json_result = json.loads(result)
+        output = json_result["Results"]["WebServiceOutput0"][0]
+        cookingTime = output["cookingTimePrediction"]
+
+    except urllib.error.HTTPError as error:
+        print("The request failed with status code: " + str(error.code))
+
+        # Print the headers to help debug
+        print(error.info())
+        print(json.loads(error.read().decode("utf8", 'ignore')))
+    
+    if cookingTime == "1.0":
+        cookingTime = "rapidly"
+    elif cookingTime == "2.0":
+        cookingTime = "neither fast nor slow"
+    elif cookingTime == "3.0":
+        cookingTime = "slowlly"
+
+    # Call render template, passing the recipe name and cooking time to the template
     return render_template(
         'result.html',
-        recipeName = recipeName,
-        cookingTime = cookingTime
+        recipeName = "",
+        cookingTime = ""
     )

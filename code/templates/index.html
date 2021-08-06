@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style>
+        body {background-color: rgb(236, 248, 68);}
+        @font-face {
+            font-family: 'chocolate-covered';
+            src: url("{{ url_for('static', filename='fonts/Chocolate Covered Raindrops BOLD.ttf') }}");
+        }
+        h1 {
+            text-align: center;
+            font-family: 'chocolate-covered';
+            font-size: 400%;
+        }
+
+        #wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
     <title>Cooking time estimator</title>
 </head>
 <body>
@@ -14,25 +33,32 @@
         <form method="POST">
             <div class="form-group">
               <label for="recipeName">Recipe name</label>
-              <input type="text" class="form-control" id="recipeName" name="recipeName" placeholder="Enter recipe name">
+              <input type="text" class="form-control" id="recipeName" name="recipeName" placeholder="Enter recipe name" required>
             </div>
+            <br>
             <div class="form-group">
                 <label for="ingredientsCount">How many ingredients?</label>
-                <input type="text" class="form-control" id="ingredientsCount" name="ingredientsCount" placeholder="Enter how many ingredients">
+                <input type="text" class="form-control" id="ingredientsCount" name="ingredientsCount" placeholder="Enter how many ingredients" required>
             </div>
+            <br>
             <div class="form-group">
                 <label for="ingredients">Please enter all ingredients</label>
-                <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter all ingredients"></textarea>
+                <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter all ingredients" required></textarea>
             </div>
+            <br>
             <div class="form-group">
                 <label for="stepsCount">How many steps?</label>
-                <input type="text" class="form-control" id="stepsCount" name="stepsCount" placeholder="Enter how many steps">
+                <input type="text" class="form-control" id="stepsCount" name="stepsCount" placeholder="Enter how many steps" required>
             </div>
+            <br>
             <div class="form-group">
                 <label for="steps">All steps</label>
-                <textarea class="form-control" id="steps" name="steps" placeholder="Enter all steps"></textarea>
+                <textarea class="form-control" id="steps" name="steps" placeholder="Enter all steps" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <br>
+            <div id = "wrapper">
+                <button type="submit" class="btn btn-success btn-lg">Submit</button>
+            <div>
           </form>
     </div>
 </body>
