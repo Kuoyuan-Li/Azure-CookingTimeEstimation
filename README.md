@@ -1,5 +1,7 @@
 # Project: Cooking time estimation base on food recipe 
-## Deployed web application using Azure Web Services: https://cooking-time-prediction.azurewebsites.net/
+## Deployed web application using Azure Web Services: 
+
+https://cooking-time-prediction.azurewebsites.net/
 ## Run in local
 Create .env file under code folder, put 
 ```bash
