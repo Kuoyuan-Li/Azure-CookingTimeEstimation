@@ -9,6 +9,7 @@ ENDPOINT = http://20.53.169.140:80/api/v1/service/predict-cooking-time/score
 KEY = gMGAX6u7vRZKWu24RZQchF696U8mJ6X5
 ```
 In the .env file
+
 Under code directory, run 
 ```bash
 flask run
