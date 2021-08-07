@@ -8,6 +8,7 @@ To access the depolyed website: https://cooking-time-prediction.azurewebsites.ne
 Or a local version can be downloaded following the steps in README.md
 
 Exceptions may occur due to the down of Azure Machine Learning service, please email me to inform if you face this scenario.
-## Findings
 
-## Reflection
+
+## Findings and Reflection
+By doing this project, I have a good understanding on how the Azure Machine Learning service works
