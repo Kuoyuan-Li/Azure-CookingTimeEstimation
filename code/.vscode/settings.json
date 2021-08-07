@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/373bb588-418d-4392-98c5-2b5f07d6c9d5/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/cooking-time-prediction",
+    "appService.deploySubpath": "."
+}
