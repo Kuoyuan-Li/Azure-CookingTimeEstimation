@@ -22,44 +22,79 @@
             justify-content: center;
         }
 
+        #popupWindow {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+        }
+
     </style>
+    <script>   
+    //style="display: none;"
+        function loading() { 
+            var a = document.getElementById("recipeName").value;
+            var b = document.getElementById("ingredientsCount").value;
+            var c = document.getElementById("ingredients").value;
+            var d = document.getElementById("stepsCount").value;
+            var e = document.getElementById("steps").value;
+            if (a == null || a == "", b == null || b == "", c == null || c == "", d == null || d == "" , e == null || e == "") {
+                
+            }else{
+                document.getElementById("popupWindow").style.display = "block";
+            }        
+            
+        }
+    </script>
     <title>Cooking time estimator</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Does it take a century to cook? 
-            <br>
-            Let me guess your cooking time base on your recipe!</h1>
-        <form method="POST">
-            <div class="form-group">
-              <label for="recipeName">Recipe name</label>
-              <input type="text" class="form-control" id="recipeName" name="recipeName" placeholder="Enter recipe name" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="ingredientsCount">How many ingredients?</label>
-                <input type="text" class="form-control" id="ingredientsCount" name="ingredientsCount" placeholder="Enter how many ingredients" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="ingredients">Please enter all ingredients</label>
-                <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter all ingredients" required></textarea>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="stepsCount">How many steps?</label>
-                <input type="text" class="form-control" id="stepsCount" name="stepsCount" placeholder="Enter how many steps" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="steps">All steps</label>
-                <textarea class="form-control" id="steps" name="steps" placeholder="Enter all steps" required></textarea>
-            </div>
-            <br>
-            <div id = "wrapper">
-                <button type="submit" class="btn btn-success btn-lg">Submit</button>
-            <div>
-          </form>
+    <div>
+        <div id="popupWindow" >
+            <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                Analyzing...
+            </button>
+        </div>
+        <div class="container">
+            <h1>Does it take a century to cook? 
+                <br>
+                Let me guess your cooking time base on your recipe!</h1>
+            <form method="POST">
+                <div class="form-group">
+                <label for="recipeName">Recipe name</label>
+                <input type="text" class="form-control" id="recipeName" name="recipeName" placeholder="Enter recipe name" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="ingredientsCount">How many ingredients?</label>
+                    <input type="text" class="form-control" id="ingredientsCount" name="ingredientsCount" placeholder="Enter how many ingredients" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="ingredients">Please enter all ingredients</label>
+                    <textarea class="form-control" id="ingredients" name="ingredients" placeholder="Enter all ingredients" required></textarea>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="stepsCount">How many steps?</label>
+                    <input type="text" class="form-control" id="stepsCount" name="stepsCount" placeholder="Enter how many steps" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="steps">All steps</label>
+                    <textarea class="form-control" id="steps" name="steps" placeholder="Enter all steps" required></textarea>
+                </div>
+                <br>
+                <div id = "wrapper">
+                    <button type="submit" class="btn btn-success btn-lg" onclick="loading()">Submit</button>
+                <div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
