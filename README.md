@@ -1,4 +1,4 @@
-# Project: Cooking time estimation base on food recipe 
+# Project: Cooking time estimation based on food recipe 
 ## Deployed web application using Azure Web Services: 
 
 https://cooking-time-prediction.azurewebsites.net/
