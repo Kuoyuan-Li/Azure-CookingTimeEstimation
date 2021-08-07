@@ -14,6 +14,10 @@ Under code directory, run
 flask run
 ```
 Then the web application can be accessed via localhost:5000
+
+## Data terms of use
+The data has been collected from Food.com (formerly GeniusKitchen), under the provision that any resulting work should cite this resource:
+Generating Personalized Recipes from Historical User Preferences. Bodhisattwa Prasad Majumder, Shuyang Li, Jianmo Ni, Julian McAuley, in Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), 2019.
 ## My idea, approach and implementation
 ### Idea formation
 
@@ -21,3 +25,4 @@ With a new and unfamiliar recipe, understanding the entire cooking time is essen
 
 AI especially machine learning techniques can be applied to solve this problem. We can predict the cooking time using a machine learning estimator. A machine learning estimator can predict something (such as cooking time for this project) with user input data based on the previously collected data. A machine learning model is trained for prediction using the data from a popular food website (food.com). The data in food.com contains the recipe for many dishes followed by their total cooking time.
 
+### Approach
