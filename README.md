@@ -3,6 +3,19 @@
 
 https://cooking-time-prediction.azurewebsites.net/
 ## Run in local
+Code structure (under code folder/directory):
+```bash
+-code
+  -static
+    -fonts
+      -Chocolate Covered Raindrops BOLD.ttf
+  -templates
+    -index.html
+    -result.html
+  -.env (need to create a new .env file if download from Github repository)
+  -app.py
+  -requirements.txt
+```
 Create .env file under code folder, put 
 ```bash
 ENDPOINT = http://20.53.169.140:80/api/v1/service/predict-cooking-time/score
