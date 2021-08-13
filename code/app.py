@@ -22,8 +22,9 @@ def index_post():
     stepsCount = request.form['stepsCount']
     steps = request.form['steps']
     #print (recipeName,ingredientsCount,ingredients,stepsCount,steps)
-    cookingTime = 1.0
+    cookingTime = None
 
+    
     # Load the values from .env
     key = os.environ['KEY']
     endpoint = os.environ['ENDPOINT']
@@ -69,6 +70,10 @@ def index_post():
         print(error.info())
         print(json.loads(error.read().decode("utf8", 'ignore')))
     
+    if not cookingTime:
+        return render_template(
+        'error.html'
+    )
     # decide speed based on label
     if cookingTime == "1.0":
         cookingTime = "rapidly"
@@ -77,6 +82,7 @@ def index_post():
     elif cookingTime == "3.0":
         cookingTime = "slowly"
 
+    
     # Call render template, passing the recipe name and cooking time to the template
     return render_template(
         'result.html',
